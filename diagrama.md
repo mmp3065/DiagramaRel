@@ -34,7 +34,7 @@ classDiagram
     }
 
     Libro "1" -- "*" Ejemplar : tiene
-    Libro "0..*" -- "*" Autor : tiene
+    Libro "0" -- "*" Autor : tiene
     Biblioteca "0" -- "*" Ejemplar : almacena
     Ejemplar "0" -- "1" Prestamo : puede estar en
     Lector "0" -- "*" Prestamo : tiene
