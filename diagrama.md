@@ -1,7 +1,4 @@
 ```mermaid
-
-classDiagram
-
    classDiagram
     class Libro{
       +String nombre
