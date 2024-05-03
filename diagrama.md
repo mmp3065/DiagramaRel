@@ -1,39 +1,48 @@
 ```mermaid
-   classDiagram
-    class Libro{
-      +String nombre
-      +String tipo
-      +String editorial
-      +int año
-      +Autor[] autores
-      +Ejemplar[] ejemplares
-    }
-    class Biblioteca{
+classDiagram
+    class Libro {
+        +String nombre
+        +String tipo
+        +String editorial
+        +int año
+        +Autor[] autores
         +Ejemplar[] ejemplares
+        +prestar()
+        +devolver()
+        +renovar()
     }
-    class Autor{
-      +String nombre
-      +String nacionalidad
-      +String fechaNacimiento
-      +Libro[] libros
+
+    class Biblioteca {
+        +Ejemplar[] ejemplares
+        +prestarLibro()
+        +devolverLibro()
+        +renovarPrestamo()
     }
-    class Ejemplar{
+
+    class Autor {
+        +String nombre
+        +String nacionalidad
+        +String fechaNacimiento
+    }
+
+    class Ejemplar {
         +int identificador
         +String estado
-        +Date fechaDevolucionPrevista
         +Libro libro
         +Lector lector
     }
-    class Lector{
+
+    class Lector {
         +String DNI
         +int numSocio
         +String nombre
-        +String dirección 
-        +Ejemplar[] préstamos
+        +String direccion
+        +Ejemplar[] prestamos
     }
 
-    Libro "1" -- "*" Autor : escribe
-    Libro "1" -- "*" Ejemplar : tiene
-    Biblioteca "1" -- "*" Ejemplar : contiene
-    Ejemplar "1" -- "0..1" Lector : está prestado a
+    Libro "1" -- "*" Autor
+    Libro "1" -- "*" Ejemplar
+    Biblioteca "1" -- "*" Ejemplar
+    Ejemplar "0..1" -- "0..1" Lector
+
 ```
