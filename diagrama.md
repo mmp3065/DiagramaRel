@@ -40,6 +40,5 @@ classDiagram
     Libro "1" -- "*" Autor
     Ejemplar "0" --> "1" Lector : prestamo
     Biblioteca "1"..|> "*" Libro
-    Ejemplar "0" --> "1" Préstamo : está prestado a
     Lector "1" -- "0..3" Préstamo : tiene
 ```
