@@ -1,48 +1,42 @@
 ```mermaid
 classDiagram
-    class Libro {
-        +String nombre
-        +String tipo
-        +String editorial
-        +int año
-        +Autor[] autores
-        +Ejemplar[] ejemplares
-        +prestar()
-        +devolver()
-        +renovar()
+    class Llibre {
+        - String nom
+        - Enum tipus
+        - String editorial
+        - int any
+        - Autor[] autors
     }
-
-    class Biblioteca {
-        +Ejemplar[] ejemplares
-        +prestarLibro()
-        +devolverLibro()
-        +renovarPrestamo()
-    }
-
     class Autor {
-        +String nombre
-        +String nacionalidad
-        +String fechaNacimiento
+        - String nom
+        - String nacionalitat
+        - Date dataNaixement
     }
-
-    class Ejemplar {
-        +int identificador
-        +String estado
-        +Libro libro
-        +Lector lector
+    class Exemplar {
+        - String identificador
+        - Enum estat
+        - Llibre llibre
     }
-
+    class Biblioteca {
+        - Exemplar[] exemplars
+    }
     class Lector {
-        +String DNI
-        +int numSocio
-        +String nombre
-        +String direccion
-        +Ejemplar[] prestamos
+        - String DNI
+        - int numSoci
+        - String nom
+        - String adreca
+        - Prestec[] prestecs
+    }
+    class Prestec {
+        - Exemplar exemplar
+        - Date dataPrestec
+        - Date dataDevolucio
     }
 
-    Libro "1" -- "*" Autor
-    Libro "1" -- "*" Ejemplar
-    Biblioteca "1" -- "*" Ejemplar
-    Ejemplar "0..1" -- "0..1" Lector
+    Llibre "1" -- "1..*" Exemplar : té
+    Llibre "0..*" -- "1..*" Autor : té
+    Biblioteca "1" -- "0..*" Exemplar : té
+    Exemplar "1" -- "0..1" Prestec : té
+    Lector "1" -- "0..3" Prestec : té
 
 ```
